@@ -29,3 +29,33 @@ def test_sub():
     ram = {0: 2, 1: 4}
     tst = {2: 2}
     assert nasm_test("sub.nasm", ram, tst)
+
+    
+def test_max():
+    ram = {0: 35, 1: 7}
+    tst = {2: 35}
+    assert nasm_test("max.nasm", ram, tst)
+
+    ram = {0: 7, 1: 63}
+    tst = {2: 63}
+    assert nasm_test("max.nasm", ram, tst)
+    
+    
+def test_abs():
+    ram = {1: -1}
+    tst = {0: 1}
+    assert nasm_test("abs.nasm", ram, tst)
+
+    ram = {1: 35}
+    tst = {0: 35}
+    assert nasm_test("abs.nasm", ram, tst)
+
+    
+def test_mult():
+    ram = {0: 2, 1: 2}
+    tst = {3: 4}
+    assert nasm_test("mult.nasm", ram, tst)
+
+    ram = {0: 32, 1: 16}
+    tst = {3: 512}
+    assert nasm_test("mult.nasm", ram, tst, 10000)
