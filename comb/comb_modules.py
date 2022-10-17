@@ -158,3 +158,29 @@ def bin2bcd(b, dig1, dig0):
        pass
 
     return instances()
+
+# @block
+# def somador_completo(xi, yi, soma, carry):
+
+#     @always_comb
+   
+#     def comb():
+        
+#         soma.next = (xi(not(yi)) or yi(not(xi)))(not(carry) or carry(not((xi(not(yi)) or yi(not(xi)))))
+#         carry.next = xi and yi or xi and carr or yi and carr
+
+#     return instances()
+
+
+# @block
+# def somador(x, y, carry, soma):
+#     n = len(x)
+
+#     @always_comb
+#     def comb():
+#         for i in range(n):
+#             somador_completo(xi[i], yi[i], soma[i], carry)
+#     return instances()
+
+
+

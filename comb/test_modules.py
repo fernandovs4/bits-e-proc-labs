@@ -94,3 +94,23 @@ def test_bin2bcd():
     dut = bin2bcd(b, dig1, dig0)
     sim = Simulation(dut, stimulus)
     sim.run()
+
+
+def test_somador():
+    @instance
+    def stimulus():
+        xi.next = 1
+        yi.next = 1
+
+        yield delay(1)
+        assert int(soma) == 1
+        
+
+    xi = Signal(modbv(0))
+    yi = Signal(modbv(0))
+    carry = Signal(modbv(0))
+    soma = Signal(modbv(0))
+
+    dut = somador_completo(xi, yi,soma, carry)
+    sim = Simulation(dut, stimulus)
+    sim.run()

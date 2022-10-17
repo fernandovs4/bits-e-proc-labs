@@ -12,6 +12,16 @@ def toplevel(LEDR, SW, KEY, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, CLOCK_50, RESET_
     sw_s = [SW(i) for i in range(10)]
     key_s = [KEY(i) for i in range(10)]
     ledr_s = [Signal(bool(0)) for i in range(10)]
+    ic1 = blinkLed(ledr_s[0], 100, CLOCK_50, RESET_N)
+    ic1 = blinkLed(ledr_s[0], 50, CLOCK_50, RESET_N)
+    ic1 = blinkLed(ledr_s[0], 1000, CLOCK_50, RESET_N)
+
+    # descomente!  
+    @always_comb
+    def comb():
+        for i in range(len(ledr_s)):
+            LEDR[i].next = ledr_s[i]
+
 
     # ---------------------------------------- #
     # comb
@@ -46,11 +56,12 @@ def toplevel(LEDR, SW, KEY, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, CLOCK_50, RESET_
     # ic5 = barLed(LEDR, CLOCK_50, RESET_N)
     # ic6 = barLed2(LEDR, CLOCK_50, RESET_N)
     # ---------------------------------------- #
-    @always_comb
-    def comb():
-        for i in range(len(ledr_s)):
-            LEDR[i].next = ledr_s[i]
 
+    # @always_comb
+    # def comb():
+    #     for i in range(len(ledr_s)):
+    #         LEDR[i].next = ledr_s[i]
+   
     return instances()
 
 

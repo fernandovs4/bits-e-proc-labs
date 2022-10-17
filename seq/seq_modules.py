@@ -10,10 +10,17 @@ from ula.ula_modules import adder
 
 
 @block
-def dff(q, d, clk, rst):
+def dff(q, d, clear, presset, clk, rst):
     @always_seq(clk.posedge, reset=rst)
     def seq():
-        q.next = d
+        if rst == 1:
+            q.next = 0
+        elif clear == 1:
+            q.
+       
+        else:
+     
+            q.next = d
 
     return instances()
 
@@ -23,13 +30,15 @@ def contador(leds, clk, rst):
 
     @always_seq(clk.posedge, reset=rst)
     def seq():
-        pass
+        tmp.next = tmp + 1
+        leds.next = tmp 
+        
 
     return instances()
 
 
 @block
-def blinkLed(led, clk, rst):
+def blinkLed(led,time_ms, clk, rst):
     cnt = Signal(intbv(0)[32:])
     l = Signal(bool(0))
 
@@ -62,5 +71,20 @@ def barLed2(leds, clk, rst):
     @always_seq(clk.posedge, reset=rst)
     def seq():
         pass
+
+    return instances()
+
+@block
+def halfAdder(a, b, soma, carry):
+    s = Signal(bool(0))
+    c = Signal(bool(0))
+    c = a & b | a&carry | b&carry
+    @always_comb
+    def comb():
+        s = a ^ b
+       
+
+        soma.next = s
+        carry.next = c
 
     return instances()
